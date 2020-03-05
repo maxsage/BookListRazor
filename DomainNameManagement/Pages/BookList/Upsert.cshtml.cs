@@ -20,11 +20,11 @@ namespace BookListRazor
         }
 
         [BindProperty]
-        public Book Book { get; set; }
+        public DomainName Book { get; set; }
 
         public async Task<IActionResult> OnGet(int? id)
         {
-            Book = new Book();
+            Book = new DomainName();
             if(id == null)
             {
                 // create
@@ -32,7 +32,7 @@ namespace BookListRazor
             }
 
             // update
-            Book = await  _db.Book.FirstOrDefaultAsync(u => u.Id == id);
+            Book = await  _db.DomainName.FirstOrDefaultAsync(u => u.Id == id);
             if(Book == null)
             {
                 return NotFound();
@@ -46,11 +46,11 @@ namespace BookListRazor
             {
                 if(Book.Id == 0)
                 {
-                    _db.Book.Add(Book);
+                    _db.DomainName.Add(Book);
                 }
                 else
                 {
-                    _db.Book.Update(Book);
+                    _db.DomainName.Update(Book);
                 }
 
                 await _db.SaveChangesAsync();

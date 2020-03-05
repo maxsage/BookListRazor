@@ -14,7 +14,7 @@ namespace BookListRazor.Model
             
         }
 
-        public DbSet<Book> Book { get; set; }
+        public DbSet<DomainName> DomainName { get; set; }
 
     }
 }
