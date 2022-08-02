@@ -22,7 +22,7 @@ namespace BookListRazor.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _db.Book.ToList() });
+            return Json(new { data = _db.DomainName.ToList() });
         }
 
 
@@ -30,12 +30,12 @@ namespace BookListRazor.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            var bookFromDb = await _db.Book.FirstOrDefaultAsync(u => u.Id == id);
+            var bookFromDb = await _db.DomainName.FirstOrDefaultAsync(u => u.Id == id);
             if (bookFromDb == null)
             {
                 return Json(new { success = false, message = "Error while Deleting" });
             }
-            _db.Book.Remove(bookFromDb);
+            _db.DomainName.Remove(bookFromDb);
             await _db.SaveChangesAsync();
             return Json(new { success = true, message = "Delete successful" });
         }
